@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Objects 
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns="http://www.spicefactory.org/parsley"
+    xmlns:parsley="com.bluecallisto.parsley.*"
+    >
+    
+    <fx:Declarations>
+        
+        <parsley:HelloWorld />
+        
+    </fx:Declarations>
+    
+</Objects>
