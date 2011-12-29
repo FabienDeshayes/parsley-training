@@ -6,6 +6,7 @@
                xmlns:parsley="http://www.spicefactory.org/parsley">
     <fx:Script>
         <![CDATA[
+            import com.bluecallisto.parsley.HelloParsley;
             import com.bluecallisto.parsley.HelloWorld;
             
             import config.mxml.TrainingConfig;
@@ -13,17 +14,39 @@
             [Inject]
             [Bindable]
             public var helloWorld:HelloWorld;
-             
+            
+            [Inject(id="mxmlHelloParsley")]
+            [Bindable]
+            public var mxmlHelloParsley:HelloParsley;
+            
+            [Inject(id="xmlHelloParsley")]
+            [Bindable]
+            public var xmlHelloParsley:HelloParsley;
+            
         ]]>
     </fx:Script>
+    
     <fx:Declarations>
         
-        <parsley:ContextBuilder config="{TrainingConfig}" />
+        <parsley:ContextBuilder>
+            <parsley:FlexConfig type="{TrainingConfig}" />
+            <parsley:XmlConfig file="config/xml/training-config.xml" />
+        </parsley:ContextBuilder>
         <parsley:Configure />
         
     </fx:Declarations>
     
+    <s:layout>
+        <s:VerticalLayout />
+    </s:layout>
+    
     <s:Label verticalCenter="0" horizontalCenter="0"
              text="The message is: {helloWorld.message}" />
+    
+    <s:Label verticalCenter="0" horizontalCenter="0"
+             text="The MXML message is: {mxmlHelloParsley.message}" />
+    
+    <s:Label verticalCenter="0" horizontalCenter="0"
+             text="The XML message is: {xmlHelloParsley.message}" />
     
 </s:Application>

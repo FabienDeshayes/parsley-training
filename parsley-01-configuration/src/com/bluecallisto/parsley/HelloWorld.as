@@ -5,10 +5,6 @@ package com.bluecallisto.parsley
 
         [Bindable]
         public var message:String;
-        
-        public function HelloWorld()
-        {
-            message = "Hello Parsley World!";
-        }
+
     }
 }
