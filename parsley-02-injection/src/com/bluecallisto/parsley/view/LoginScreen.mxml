@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+         xmlns:s="library://ns.adobe.com/flex/spark" 
+         xmlns:mx="library://ns.adobe.com/flex/mx" width="250" height="300"
+         xmlns:parsley="http://www.spicefactory.org/parsley">
+    
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.controller.LoginController;
+            import com.bluecallisto.parsley.model.User;
+            
+            private var _controller:LoginController;
+            
+            [Inject(id="loggingInUser")]
+            public var _loggingInUser:User;
+            
+            [Inject(id="loggedUser")]
+            [Bindable]
+            public var _loggedUser:User;
+            
+            [Inject]
+            public function init(controller:LoginController):void
+            {
+                _controller = controller;
+            }
+            
+            protected function loginButton_clickHandler(event:MouseEvent):void
+            {
+                _loggingInUser.login = loginTextInput.text;
+                _loggingInUser.password = passwordTextInput.text;
+                
+                _controller.login();
+                
+            }
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+        <parsley:Configure />
+    </fx:Declarations>
+    
+    <s:layout>
+        <s:VerticalLayout />
+    </s:layout>
+    
+    <s:HGroup verticalAlign="bottom">
+        <s:Label text="Login:" width="80"/>
+        <s:TextInput id="loginTextInput" />
+    </s:HGroup>
+    <s:HGroup verticalAlign="bottom">
+        <s:Label text="Password:" width="80"/>
+        <s:TextInput id="passwordTextInput" />
+    </s:HGroup>
+    
+    <s:Button id="loginButton" label="Login" click="loginButton_clickHandler(event)"/>
+    
+    <s:Label visible="{_loggedUser.login != ''}"
+             text="{_loggedUser.login} logged!" />
+    
+</s:Group>

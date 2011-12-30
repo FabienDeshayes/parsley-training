@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="250" height="300"
+          horizontalAlign="center" xmlns:parsley="http://www.spicefactory.org/parsley">
+    
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.service.IValidationService;
+            
+            [Inject]
+            public var service:IValidationService;
+            
+            protected function validationButton_clickHandler(event:MouseEvent):void
+            {
+                var isValid:Boolean = service.validate(textInput.text);
+                
+                resultLabel.text = isValid
+                        ? textInput.text + " is valid."
+                        : textInput.text + " is not valid.";
+            }
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:Configure />
+    </fx:Declarations>
+    
+    <s:TextInput id="textInput" width="200" />
+    <s:Button id="validationButton" label="Validate"
+              click="validationButton_clickHandler(event)"/>
+    <s:Label id="resultLabel" />
+    
+</s:VGroup>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               xmlns:view="com.bluecallisto.parsley.view.*"
+               xmlns:parsley="http://www.spicefactory.org/parsley"
+               minWidth="955" minHeight="600">
+    <fx:Script>
+        <![CDATA[
+            import config.InjectionConfig;
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:ContextBuilder config="{InjectionConfig}" />
+    </fx:Declarations>
+
+    <s:layout>
+        <s:HorizontalLayout verticalAlign="middle" horizontalAlign="center"/>
+    </s:layout>
+    
+    <view:TextInputValidator />
+    <view:RandomStringValidator />
+    <view:LoginScreen />
+    
+</s:Application>

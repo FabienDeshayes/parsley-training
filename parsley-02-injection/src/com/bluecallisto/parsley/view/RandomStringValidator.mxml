@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="250" height="300"
+          horizontalAlign="center" xmlns:parsley="http://www.spicefactory.org/parsley">
+    
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.service.IValidationService;
+            
+            import mx.utils.StringUtil;
+            
+            [Bindable]
+            public var serviceInitialized:Boolean = false;
+            
+            [Bindable]
+            public var generatedStr:String;
+            
+            private var _service:IValidationService;
+            
+            [Inject]
+            public function set service(value:IValidationService):void
+            {
+                _service = value;
+                serviceInitialized = value != null;
+            }
+            
+            protected function validationButton_clickHandler(event:MouseEvent):void
+            {
+                var isValid:Boolean = _service.validate(generatedStr);
+                
+                resultLabel.text = isValid
+                        ? generatedStr + " is valid."
+                        : generatedStr + " is not valid.";
+            }
+            
+            protected function generationButton_clickHandler(event:MouseEvent):void
+            {
+                generatedStr = "";
+                var length:int = Math.random() * 10 + 1;
+                
+                for (var i:int = 1; i < length; i++)
+                {
+                    var char:String = String.fromCharCode(Math.random() * 28 + "a".charCodeAt(0));
+                    generatedStr += char;
+                }
+            }
+            
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:Configure />
+    </fx:Declarations>
+    
+    <s:Label text="Validation service {serviceInitialized ? 'initialized' : 'preparing'}"/>
+    <s:Button id="generationButton" label="Generate"
+              click="generationButton_clickHandler(event)"/>
+    <s:Label id="randomLabel" text="Generated string: {generatedStr}"/>
+    <s:Button id="validationButton" label="Validate"
+              click="validationButton_clickHandler(event)"/>
+    <s:Label id="resultLabel" />
+    
+</s:VGroup>

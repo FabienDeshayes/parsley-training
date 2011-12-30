@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Objects 
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns="http://www.spicefactory.org/parsley"
+    xmlns:service="com.bluecallisto.parsley.service.*"
+    xmlns:model="com.bluecallisto.parsley.model.*"
+    >
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.controller.LoginController;
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+
+        <!-- service -->
+        <service:ValidationService />
+        <service:MockLoginService />
+        <service:RemoteLoginService />
+        
+        <!-- model -->
+        <model:User id="loggingInUser" />
+        <model:User id="loggedUser" />
+        
+        <!-- controller -->
+        <!-- need to use this syntax because it's injecting by constructor -->
+        <Object type="{LoginController}">
+            <Property name="loginService" typeRef="{MockLoginService}" />
+        </Object>
+        
+    </fx:Declarations>
+    
+</Objects>
