@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+                xmlns:s="library://ns.adobe.com/flex/spark" 
+                xmlns:mx="library://ns.adobe.com/flex/mx" 
+                autoDrawBackground="true" width="100%">
+
+    <fx:Declarations>
+        <s:DateTimeFormatter id="formatter" dateTimePattern="dd MMM yyyy" />
+    </fx:Declarations>
+    
+    <s:layout>
+        <s:VerticalLayout />
+    </s:layout>
+    
+    <s:HGroup width="100%">
+        <s:Label width="100" text="Date: {formatter.format(data.date)}" />
+        <s:Label width="100%" text="Sent by: {data.sender}" />
+    </s:HGroup>
+    
+    <s:Label width="100%" text="Subject: {data.title}" fontWeight="bold" />
+    
+</s:ItemRenderer>

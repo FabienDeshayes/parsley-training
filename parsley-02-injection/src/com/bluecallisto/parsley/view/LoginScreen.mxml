@@ -19,7 +19,7 @@
             public var _loggedUser:User;
             
             [Inject]
-            public function init(controller:LoginController):void
+            public function init(controller:LoginController = null):void
             {
                 _controller = controller;
             }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Objects 
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns="http://www.spicefactory.org/parsley"
+    xmlns:service="com.bluecallisto.parsley.service.*"
+    xmlns:model="com.bluecallisto.parsley.model.*"
+    >
+
+    <fx:Declarations>
+
+        <model:Inbox />
+        <model:Spam />
+        
+        <model:EmailPM />
+        
+    </fx:Declarations>
+    
+</Objects>

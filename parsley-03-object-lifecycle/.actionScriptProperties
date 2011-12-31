@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="ParsleyConfiguration.mxml" projectUUID="27c64793-fe21-43f1-9521-257ac5d0450d" version="10">
+<actionScriptProperties analytics="false" mainApplicationPath="EmailApp.mxml" projectUUID="ffbb1300-b0cf-4653-80e4-481f5807ce37" version="10">
   <compiler additionalCompilerArguments="-locale en_US -use-network=false" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
@@ -14,7 +14,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="ParsleyConfiguration.mxml"/>
+    <application path="EmailApp.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
