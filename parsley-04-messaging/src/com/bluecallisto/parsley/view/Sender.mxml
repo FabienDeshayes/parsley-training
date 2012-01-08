@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="400"
+          xmlns:parsley="http://www.spicefactory.org/parsley">
+    
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.model.SenderPM;
+            
+            [Bindable]
+            public var model:SenderPM;
+            
+            protected function sendMessageButton_clickHandler(event:MouseEvent):void
+            {
+                model.sendMessage(messageInput.text);
+                messageInput.text = "";
+            }
+            
+            protected function sendEventButton_clickHandler(event:MouseEvent):void
+            {
+                model.sendEvent(eventInput.text);
+                eventInput.text = "";
+            }
+            
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:FastInject type="{SenderPM}" property="model" />
+    </fx:Declarations>
+    
+    <s:CheckBox label="Intercept" selected="@{model.intercepting}" />
+    
+    <s:Label fontWeight="bold" text="Message" />
+    <s:TextInput id="messageInput" width="100%" />
+    <s:Button id="sendMessageButton" label="Send" width="100%"
+              click="sendMessageButton_clickHandler(event)"/>
+    
+    <s:Spacer height="20" />
+    
+    <s:Label fontWeight="bold" text="Event" />
+    <s:TextInput id="eventInput" width="100%" />
+    <s:Button id="sendEventButton" label="Send" width="100%"
+              click="sendEventButton_clickHandler(event)"/>
+    
+    <!--<s:Label fontWeight="bold" text="Message" />
+    <s:TextInput id="input" width="100%" />
+    <s:Button id="sendButton" label="Send" width="100%"
+              click="sendButton_clickHandler(event)"/>-->
+    
+</s:VGroup>
