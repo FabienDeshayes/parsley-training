@@ -8,19 +8,53 @@
     <fx:Script>
         <![CDATA[
             import com.bluecallisto.parsley.model.EmailPM;
+            import com.bluecallisto.parsley.model.IEmailFolder;
             
             import config.EmailConfig;
             
+            import org.spicefactory.parsley.flex.tag.builder.FlexContextEvent;
+            
+            import spark.events.IndexChangeEvent;
+            
             [Bindable]
             public var model:EmailPM;
+            
+            protected function folderComboBox_changeHandler(event:IndexChangeEvent):void
+            {
+                var chosenFolder:IEmailFolder = (event.newIndex == 0) ? model.inbox : model.spam;
+                model.switchTo(chosenFolder);
+            }
+            
+            protected function modelInjectionCompleteHandler(event:Event):void
+            {
+                // injections are made once a context has been fully initialized
+                // we know the data has been loaded so we can display the default values
+                folderComboBox.selectedIndex = 0;
+                model.switchTo(model.inbox);
+            }
             
         ]]>
     </fx:Script>
     
     <fx:Declarations>
         <parsley:ContextBuilder config="{EmailConfig}" />
-        <parsley:FastInject property="model" type="{EmailPM}" />
+        <parsley:FastInject property="model" type="{EmailPM}"
+                            injectionComplete="modelInjectionCompleteHandler(event)"/>
     </fx:Declarations>
+    
+    
+    <s:layout>
+        <s:VerticalLayout gap="20" verticalAlign="middle" horizontalAlign="center"/>
+    </s:layout>
+    
+    <s:ComboBox id="folderComboBox" change="folderComboBox_changeHandler(event)">
+        <s:ArrayCollection>
+            <fx:Array>
+                <fx:String>Inbox</fx:String>
+                <fx:String>Spam</fx:String>
+            </fx:Array>
+        </s:ArrayCollection>
+    </s:ComboBox>
     
     <s:DataGroup width="400"
                  dataProvider="{model.selectedFolder.messages}"

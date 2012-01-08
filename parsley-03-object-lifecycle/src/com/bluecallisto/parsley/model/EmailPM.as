@@ -12,16 +12,9 @@ package com.bluecallisto.parsley.model
         [Inject]
         public var spam:Spam;
         
-        [Init]
-        public function init():void
-        {
-            switchTo(inbox);
-        }
-        
-        private function switchTo(folder:IEmailFolder):void
+        public function switchTo(folder:IEmailFolder):void
         {
             selectedFolder = folder;
-            folder.fetchMessages();
         }
         
     }
