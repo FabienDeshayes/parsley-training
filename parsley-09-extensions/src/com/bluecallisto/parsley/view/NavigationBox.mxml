@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup 
+    width="400" height="300"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:s="library://ns.adobe.com/flex/spark">
+    
+    <fx:Script>
+        <![CDATA[
+            
+            [Open]
+            public function openHandler():void
+            {
+                navigationTextArea.text += "Opening new app.\n";
+            }
+            
+            [Close]
+            public function quitHandler():void
+            {
+                navigationTextArea.text += "Closing app.\n";
+            }
+            
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:Configure />
+    </fx:Declarations>
+    
+    <s:TextArea
+        id="navigationTextArea"
+        editable="false"
+        width="100%" height="100%"
+        />
+</s:HGroup>

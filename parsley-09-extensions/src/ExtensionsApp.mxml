@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    minHeight="600"
+    minWidth="955"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:view="com.bluecallisto.parsley.view.*"
+    preinitialize="preinitializeHandler(event)">
+
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.extension.Close;
+            import com.bluecallisto.parsley.extension.Open;
+            import com.bluecallisto.parsley.message.CloseApplicationMessage;
+            import com.bluecallisto.parsley.message.OpenApplicationMessage;
+            
+            import config.ExtensionsConfig;
+            
+            import mx.events.FlexEvent;
+            import mx.logging.LogEventLevel;
+            
+            import org.spicefactory.lib.reflect.Metadata;
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+
+            private var _currentApp:String = "";
+
+            private function set currentApp(appName:String):void
+            {
+                if (_currentApp != "")
+                {
+                    dispatcher(new CloseApplicationMessage(_currentApp));
+                }
+
+                _currentApp = appName;
+
+                if (_currentApp != "")
+                {
+                    dispatcher(new OpenApplicationMessage(_currentApp));
+                }
+            }
+
+            protected function openApp_clickHandler(event:MouseEvent, appName:String):void
+            {
+                currentApp = appName;
+            }
+
+            protected function closeApp_clickHandler(event:MouseEvent):void
+            {
+                currentApp = "";
+            }
+
+            protected function preinitializeHandler(event:FlexEvent):void
+            {
+                Metadata.registerMetadataClass(Open);
+                Metadata.registerMetadataClass(Close);
+            }
+            
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+        
+        <parsley:ContextBuilder config="{ExtensionsConfig}" />
+        
+        <parsley:Configure />
+        
+        <s:TraceTarget includeCategory="true"
+                       includeLevel="true"
+                       includeTime="true"
+                       level="{LogEventLevel.INFO}">
+            <s:filters>
+                <fx:String>org.spicefactory.parsley.*</fx:String>
+                <fx:String>com.bluecallisto.parsley.*</fx:String>
+            </s:filters>
+        </s:TraceTarget>
+        
+    </fx:Declarations>
+
+    <s:layout>
+        <s:VerticalLayout />
+    </s:layout>
+
+    <s:Button 
+        label="Open app A"
+        click="openApp_clickHandler(event, 'App A')" />
+    <s:Button 
+        label="Open app B"
+        click="openApp_clickHandler(event, 'App B')" />
+    <s:Button 
+        label="Open app C"
+        click="openApp_clickHandler(event, 'App C')" />
+    <s:Button 
+        label="Close current app"
+        click="closeApp_clickHandler(event)" />
+
+    <view:NavigationBox />
+
+</s:Application>

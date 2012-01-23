@@ -2,4 +2,6 @@ parsley-01-configuration/bin-debug
 parsley-02-injection/bin-debug
 parsley-03-object-lifecycle/bin-debug
 parsley-04-messaging/bin-debug
+parsley-05-configuration-dsl/bin-debug
+parsley-09-extensions/bin-debug
 *.DS_Store

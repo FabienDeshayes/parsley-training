@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+          xmlns:tag="com.bluecallisto.parsley.tag.*"
+          xmlns:parsley="http://www.spicefactory.org/parsley">
+    
+    <fx:Script>
+        <![CDATA[
+            import com.bluecallisto.parsley.model.User;
+            
+            [Bindable]
+            public var user:User;
+            
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        
+        <parsley:FastInject type="{User}" property="user" />
+        
+        <tag:UserTag id="userTag" user="{user.username}" />
+        
+    </fx:Declarations>
+    
+    <s:Label text="Risk!" visible="{userTag.canSeeRisk}" />
+    
+    <s:Label text="Admin!" visible="{userTag.isAdmin}" />
+</s:VGroup>
