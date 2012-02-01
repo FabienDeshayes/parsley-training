@@ -3,5 +3,8 @@ parsley-02-injection/bin-debug
 parsley-03-object-lifecycle/bin-debug
 parsley-04-messaging/bin-debug
 parsley-05-configuration-dsl/bin-debug
+parsley-06-scoping/bin-debug
+parsley-07-commands/bin-debug
+parsley-08-modules/bin-debug
 parsley-09-extensions/bin-debug
 *.DS_Store

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book author="Edgar Allan Poe" title="The Murders in the Rue Morgue" />
+    <book author="James Joyce" title="Ulysses" />
+    <book author="Ray Bradbury" title="Fahrenheit 461" />
+    <book author="Marcel Proust" title="The Way by Swann's" />
+    <book author="Jonathan Littell" title="The Kindly Ones" />
+</books>
