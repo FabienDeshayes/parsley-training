@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:BaseNode xmlns:fx="http://ns.adobe.com/mxml/2009" 
+         xmlns:s="library://ns.adobe.com/flex/spark" 
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         xmlns:parsley="http://www.spicefactory.org/parsley"
+         xmlns:view="com.bluecallisto.parsley.view.*"
+         backgroundColor="0xeeafee">
+    <fx:Script>
+        <![CDATA[
+            import config.TreeNodeConfig;
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:ContextBuilder config="{TreeNodeConfig}" />
+    </fx:Declarations>
+    
+</view:BaseNode>

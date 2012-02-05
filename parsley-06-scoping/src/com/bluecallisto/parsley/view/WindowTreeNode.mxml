@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:BaseNode xmlns:fx="http://ns.adobe.com/mxml/2009" 
+               xmlns:s="library://ns.adobe.com/flex/spark" 
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               xmlns:parsley="http://www.spicefactory.org/parsley"
+               xmlns:view="com.bluecallisto.parsley.view.*"
+               backgroundColor="0xeeeeaf">
+    <fx:Script>
+        <![CDATA[
+            import config.WindowTreeNodeConfig;
+        ]]>
+    </fx:Script>
+    
+    <fx:Declarations>
+        <parsley:ContextBuilder>
+            <parsley:FlexConfig type="{WindowTreeNodeConfig}" />
+            <parsley:Scope name="window" inherited="true" />
+        </parsley:ContextBuilder>
+    </fx:Declarations>
+    
+</view:BaseNode>
